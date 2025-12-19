@@ -1,33 +1,3 @@
-This project is developed as part of the System Programming cource.It is a simple Student İnformation System running on Docker containers.
-- Ubuntu
-- C++
-- PostgreSQL
-- Docker & Docker Compose
-- Git & GitHub
-The system consists of two main containers:
--PostgreSQL database container
-cat << 'EOF' > README.md
-This project is developed as part of the System Programming cource.It is a simple Student İnformation System running on Docker containers.
-- Ubuntu
-- C++
-- PostgreSQL
-- Docker & Docker Compose
-- Git & GitHub
-The system consists of two main containers:
-- PostgreSQL database container
-
-cat << 'EOF' > README.md
-This project is developed as part of the System Programming cource.It is a simple Student İnformation System running on Docker containers.
-- Ubuntu
-- C++
-- PostgreSQL
-- Docker & Docker Compose
-- Git & GitHub
-The system consists of two main containers:
-- PostgreSQL database container
-- C++ application container
-
-nano README.md
 # Student Information System
 
 This project is developed as part of the System Programming course.
@@ -55,10 +25,8 @@ The system consists of two main containers:
 Please see INSTALL.md for setup instructions.
 
 ## Team Roles
-- Project Manager & Documentation
-- Docker & DevOps Engineer
-- C++ Developer
+- Git & GitHub Management, Documentation (Emre Kubilay)
+- Docker & DevOps Engineer (Hilal Bizimyer)
+- C++ Developer (Ezgi Erdoğan)
 
-clear
-bash
-clear
+
