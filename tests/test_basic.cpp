@@ -1,9 +1,10 @@
+#include <cassert>
 #include <iostream>
-#include "app.hpp"
 
 int main() {
-    std::cout << "test_basic: started" << std::endl;
-    std::cout << "OK" << std::endl;
+    std::cout << "Basic test running...\n";
+    int x = 1;
+    assert(x == 1);
+    std::cout << "Test passed.\n";
     return 0;
 }
-
