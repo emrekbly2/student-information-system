@@ -1,0 +1,32 @@
+services:
+  db:
+    image: hilalb/student-information-system-postgres:latest
+    container_name: sis-db
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-sis}
+      POSTGRES_USER: ${POSTGRES_USER:-sis_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-sis_pass}
+    volumes:
+      - sis_db_data:/var/lib/postgresql/data
+    networks:
+      - sis_net
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $POSTGRES_USER -d $POSTGRES_DB"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  app:
+    image: hilalb/student-information-system-app:latest
+    container_name: sis-app
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - sis_net
+
+volumes:
+  sis_db_data:
+
+networks:
+  sis_net:

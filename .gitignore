@@ -1,0 +1,29 @@
+# Build directories
+build/
+bin/
+obj/
+CMakeCache.txt
+CMakeFiles/
+
+# Compiled files
+*.o
+*.a
+*.so
+*.exe
+
+# IDE / Editor files
+.vscode/
+*.swp
+*.swo
+*.save
+*~
+
+# Logs
+*.log
+
+# Temporary files
+tmp/
+temp/
+
+.env
+

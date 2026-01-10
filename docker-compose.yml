@@ -1,0 +1,47 @@
+
+
+services:
+  db:
+    build:
+      context: .
+      dockerfile: Dockerfile.db
+    image: hilalb/student-information-system-postgres:latest
+    container_name: sis-db
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-sis}
+      POSTGRES_USER: ${POSTGRES_USER:-sis_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-sis_pass}
+    volumes:
+      - sis_db_data:/var/lib/postgresql
+    networks:
+      - sis_net
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: hilalb/student-information-system-app:latest
+    container_name: sis-app
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DB_HOST: db
+      DB_PORT: "5432"
+      DB_NAME: ${POSTGRES_DB:-sis}
+      DB_USER: ${POSTGRES_USER:-sis_user}
+      DB_PASSWORD: ${POSTGRES_PASSWORD:-sis_pass}
+    networks:
+      - sis_net
+
+volumes:
+  sis_db_data:
+
+networks:
+  sis_net:
+    driver: bridge
