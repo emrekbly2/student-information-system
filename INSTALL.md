@@ -2,7 +2,7 @@
 
 ## Requirements
 
-- Ubuntu 20.04 or newer
+- Ubuntu 22.04 
 - Docker
 - Docker Compose
 - Git
@@ -12,8 +12,9 @@
 1. Clone the project repository.
 2. Navigate to the project directory.
 3. Run the following command:
-   docker-compose up
-4. Use the application through the command-line interface.
+   docker-compose exec app bash
+   
+5. Use the application through the command-line interface.
 
 ## Notes
 
