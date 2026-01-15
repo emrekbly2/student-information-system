@@ -9,12 +9,12 @@ private:
     std::string connection_string;
     pqxx::connection* conn;
 
-    // Internal helper
+    // Internal helper for validation
     bool is_valid_email(const std::string& email) const;
 
 public:
     // Constructor / Destructor
-    Database(const std::string& conn_str);
+    explicit Database(const std::string& conn_str);
     ~Database();
 
     // Connection management
