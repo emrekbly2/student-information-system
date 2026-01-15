@@ -7,13 +7,21 @@
 class Database {
 private:
     std::string connection_string;
+    pqxx::connection* conn;
+
+    // Internal helper
+    bool is_valid_email(const std::string& email) const;
 
 public:
+    // Constructor / Destructor
     Database(const std::string& conn_str);
+    ~Database();
 
+    // Connection management
     bool connect();
 
-    void insert_student(
+    // CRUD operations
+    bool insert_student(
         int id,
         const std::string& name,
         const std::string& surname,
@@ -23,7 +31,7 @@ public:
 
     void list_students();
 
-    void update_student(
+    bool update_student(
         int id,
         const std::string& name,
         const std::string& surname,
@@ -31,7 +39,7 @@ public:
         const std::string& email
     );
 
-    void delete_student(int id);
+    bool delete_student(int id);
 };
 
-#endif
+#endif // DATABASE_HPP
